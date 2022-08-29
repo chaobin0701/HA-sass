@@ -1,24 +1,19 @@
-import request from '@/utils/request'
+import request from "@/utils/request";
 
-export function login(data) {
+/**
+ * 获取用户资料地址
+ * */ 
+export function getUserInfo(){
   return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
+    url:'/sys/profile',
+    method:'post',
+
   })
 }
 
-export function getInfo(token) {
-  return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
+export function login(data) {}
 
-export function logout() {
-  return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
-}
+export function getInfo(token) {}
+
+export function logout() {}
+   

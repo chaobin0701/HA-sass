@@ -1,6 +1,17 @@
 import request from "@/utils/request";
 
 /**
+ * 用户登录接口
+ * */ 
+export function login(data) {
+  return request({
+    url:'/sys/login',
+    method:'post',
+    data
+  }) 
+}
+
+/**
  * 获取用户资料地址
  * */ 
 export function getUserInfo(){
@@ -11,9 +22,13 @@ export function getUserInfo(){
   })
 }
 
-export function login(data) {}
+/**
+ * 获取用户头像
+ * */ 
+export function getUserDetailById(id){
+  return request({
+    url:`/sys/user/${id}`
+  })
+}
 
-export function getInfo(token) {}
-
-export function logout() {}
    

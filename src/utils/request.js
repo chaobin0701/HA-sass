@@ -38,14 +38,14 @@ service.interceptors.request.use(
 service.interceptors.response.use(
   (response) => {
     // axios 默认加了一层data
-    const { success, messgae, data } = response.data;
+    const { success, message, data } = response.data;
     // 要根据success的成功与否决定下面的操作
     if (success) {
       return data;
     } else {
       // 业务已经错误了,应该进catch
       Message.error(message); //提示错误信息
-      return Promise.reject(new Error(messgae));
+      return Promise.reject(new Error(message));
     }
   },
   (error) => {

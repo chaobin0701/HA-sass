@@ -23,7 +23,7 @@ export function getUserInfo(){
 }
 
 /**
- * 获取用户头像
+ * 获取某个用户的基本信息
  * */ 
 export function getUserDetailById(id){
   return request({

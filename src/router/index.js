@@ -25,6 +25,7 @@ export const asyncRoutes = [
   socialRouter,
 ];
 
+
 // 静态路由
 export const constantRoutes = [
   {
@@ -32,13 +33,11 @@ export const constantRoutes = [
     component: () => import("@/views/login/index"),
     hidden: true,
   },
-
   {
     path: "/404",
     component: () => import("@/views/404"),
     hidden: true,
   },
-
   {
     path: "/",
     component: Layout,
@@ -48,7 +47,7 @@ export const constantRoutes = [
         path: "dashboard",
         name: "Dashboard",
         component: () => import("@/views/dashboard/index"),
-        meta: { title: "Dashboard", icon: "dashboard" },
+        meta: { title: "主页", icon: "dashboard" },
       },
     ],
   },
@@ -63,19 +62,17 @@ export const constantRoutes = [
       },
     ],
   },
-  // 404 page must be placed at the end !!!
-  { path: "*", redirect: "/404", hidden: true },
 ];
 
 const createRouter = () =>
   new Router({
-    // mode: 'history', // require service support
     scrollBehavior: () => ({ y: 0 }),
-    routes: [...constantRoutes, ...asyncRoutes],
+    routes: [...constantRoutes], //改成只有静态路由
   });
 
 const router = createRouter();
 
+// 重置路由
 export function resetRouter() {
   const newRouter = createRouter();
   router.matcher = newRouter.matcher; // reset router

@@ -5,7 +5,7 @@ import "normalize.css/normalize.css"; // A modern alternative to CSS resets
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import locale from "element-ui/lib/locale/lang/en"; // lang i18n
-
+import CheckPermission from '@/mixin/checkPermission'
 import "@/styles/index.scss"; // global css
 
 import App from "./App";
@@ -15,6 +15,7 @@ import * as directives from "@/directives";
 import * as filters from '@/filters' // 引入工具类
 import "@/icons"; // icon
 import "@/permission"; // 路由守卫 控制
+
 
 import Component from '@/components'
 
@@ -33,6 +34,8 @@ Object.keys(filters).forEach(key => {
   // 注册过滤器
   Vue.filter(key, filters[key])
 })
+
+Vue.mixin(CheckPermission)
 
 // set ElementUI lang to EN
 Vue.use(ElementUI, { locale });

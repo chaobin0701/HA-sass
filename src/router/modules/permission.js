@@ -2,7 +2,6 @@
 import layout from '@/layout'
 export default {
   path:"/permission",
-  // name:'permission',//给模块的一级路由加一个name属性  这个属性我们会在做权限的时候用到
   component:layout,
   children:[
     // 二级路由的path什么都不用写的时候,此时它表示二级路由的默认路由
@@ -10,7 +9,7 @@ export default {
       path:'', //这里不用写,什么都不用写表示 /employees 不但有布局 layout => 员工主页
       component:() => import('@/views/permission'),
       meta:{
-        title:'权限管理', //这里为什么要用title,左侧刁航读取了这里的title属性
+        title:'权限管理', //这里为什么要用title,左侧导航读取了这里的title属性
         icon:'lock'
       }
     }

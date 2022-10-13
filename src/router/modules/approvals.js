@@ -1,8 +1,7 @@
 // 员工的路由规则
 import layout from '@/layout'
 export default {
-  path:"/approvals",
-  // name:'approvals',//给模块的一级路由加一个name属性  这个属性我们会在做权限的时候用到
+  path:'/approvals',
   component:layout,
   children:[
     // 二级路由的path什么都不用写的时候,此时它表示二级路由的默认路由

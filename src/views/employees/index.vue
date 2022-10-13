@@ -32,11 +32,12 @@
           </el-table-column>
           <el-table-column label="操作" sortable="" fixed="right" width="280">
             <template slot-scope="{row}">
-              <el-button type="text" size="small" @click="$router.push(`/employees/detail/${row.id}`)">查看</el-button>
+              <el-button  type="text" size="small"
+                @click="$router.push(`/employees/detail/${obj.row.id}`)">查看</el-button>
               <el-button type="text" size="small">转正</el-button>
               <el-button type="text" size="small">调岗</el-button>
               <el-button type="text" size="small">离职</el-button>
-              <el-button type="text" size="small">角色</el-button>
+              <el-button type="text" size="small" @click="editRole(row.id)">角色</el-button>
               <el-button type="text" size="small" @click="deleteEmployee(row.id)">删除</el-button>
             </template>
           </el-table-column>
@@ -48,6 +49,8 @@
         </el-row>
       </el-card>
     </div>
+    <!--  -->
+    <assign-role :show-role-dialog.sync="showRoleDialog" :user-id="userId" ref="assignRole"></assign-role>
   </div>
 </template>
 
@@ -55,7 +58,8 @@
 import { getEmployeeList, deleteEmployee } from '@/api/employees'
 import EmployeeEnum from '@/api/constant/employees' //聘用形式枚举数据
 import AddDemployee from './components/add-employee.vue'
-import {formatDate} from '@/filters'
+import AssignRole from './components/assign-role.vue'
+import { formatDate } from '@/filters'
 export default {
   data() {
     return {
@@ -66,10 +70,12 @@ export default {
         size: 10,
         total: 0
       },
-      showDialog: false
+      showDialog: false,//默认是关闭的弹层
+      showRoleDialog: false, //显示分配的弹层
+      userId: null, //定义一个userId
     }
   },
-  components: { AddDemployee },
+  components: { AddDemployee, AssignRole },
   created() {
     this.getEmployeeList()
   },
@@ -141,6 +147,13 @@ export default {
           return item[headers[key]]
         })
       })
+    },
+    // 编辑用户角色
+    async editRole(id) {
+      this.userId = id
+      // 调用子组件的方法
+      await this.$refs.assignRole.getUserDetailById(id)
+      this.showRoleDialog = true
     }
   }
 }

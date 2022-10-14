@@ -12,7 +12,7 @@ import attendancesRouter from "./modules/attendances";
 import salarysRouter from "./modules/salarys";
 import settingRouter from "./modules/setting";
 import socialRouter from "./modules/social";
-
+import userRouter from './modules/user'
 // 动态路由 | 导出变量是为了后期做权限管理
 export const asyncRoutes = [
   approvalsRouter,
@@ -61,7 +61,7 @@ export const constantRoutes = [
         component: () => import("@/views/import"),
       },
     ],
-  },
+  },userRouter //防止都可以访问的静态里也有
 ];
 
 const createRouter = () =>

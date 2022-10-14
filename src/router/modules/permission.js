@@ -1,7 +1,7 @@
 // 员工的路由规则
 import layout from '@/layout'
 export default {
-  path:"/permission",
+  path:"/permissions",
   component:layout,
   children:[
     // 二级路由的path什么都不用写的时候,此时它表示二级路由的默认路由

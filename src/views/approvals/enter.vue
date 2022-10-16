@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { information, reviewHistory } from '@/api/approvals'
+import { getInformation, getReviewHistory } from '@/api/approvals'
 
 export default {
   name: 'UsersTableIndex',

@@ -1,17 +1,36 @@
-// 员工的路由规则
-import layout from '@/layout'
-export default {
-  path:"/attendances",
-  component:layout,
-  children:[
-    // 二级路由的path什么都不用写的时候,此时它表示二级路由的默认路由
+
+import Layout from '@/layout'
+
+const attendRouter = {
+  path: '/attendances',
+  component: Layout,
+  children: [
     {
-      path:'', //这里不用写,什么都不用写表示 /employees 不但有布局 layout => 员工主页
-      component:() => import('@/views/attendances'),
-      meta:{
-        title:'考勤', //这里为什么要用title,左侧刁航读取了这里的title属性
-        icon:'skill'
+      path: '',
+      component: () => import('@/views/attendances'),
+      name: 'attendances',
+      meta: {
+        title: '考勤',
+        icon: 'excel' }
+    },
+    {
+      path: 'archiving',
+      component: () => import('@/views/attendances/historical'),
+      name: 'archiving',
+      hidden: true,
+      meta: {
+        title: '归档'
+      }
+    },
+    {
+      path: 'report/:month',
+      component: () => import('@/views/attendances/report'),
+      name: 'reports',
+      hidden: true,
+      meta: {
+        title: '报表'
       }
     }
   ]
 }
+export default attendRouter

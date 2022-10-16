@@ -8,6 +8,12 @@
     <!-- <breadcrumb class="breadcrumb-container" /> -->
 
     <div class="right-menu">
+      <!-- 多语言切换 -->
+      <lang class="right-menu-item" />
+      <!-- 主题颜色选择 -->
+      <theme-picker class="right-menu-item" />
+      <!-- 放置全屏插件 -->
+      <screen-full class="right-menu-item" />
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
           <img :src="staffPhoto" class="user-avatar" v-imagerror="defaultImg">
@@ -36,15 +42,20 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-
+import ScreenFull from '@/components/ScreenFull/index.vue'
+import ThemePicker from '@/components/ThemePicker/index.vue'
+import Lang from '@/components/lang/index.vue'
 export default {
   components: {
     Breadcrumb,
-    Hamburger
+    Hamburger,
+    ScreenFull,
+    ThemePicker,
+    Lang
   },
-  data(){
-    return{
-      defaultImg:require('@/assets/common/head.jpg')
+  data() {
+    return {
+      defaultImg: require('@/assets/common/head.jpg')
     }
   },
   computed: {
@@ -67,6 +78,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.right-menu-item {
+  vertical-align: middle;
+}
+
 .navbar {
   height: 50px;
   overflow: hidden;
@@ -136,8 +151,6 @@ export default {
       height: 100%;
       font-size: 18px;
       color: #5a5e66;
-      vertical-align: text-bottom;
-
       &.hover-effect {
         cursor: pointer;
         transition: background .3s;
@@ -152,11 +165,10 @@ export default {
       margin-right: 30px;
 
       .avatar-wrapper {
-        margin-top: 5px;
         position: relative;
 
 
-        .user-avatar { 
+        .user-avatar {
           cursor: pointer;
           width: 30px;
           height: 30px;

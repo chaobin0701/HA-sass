@@ -2,10 +2,12 @@
 import PageTools from "./PageTools";
 import UploadExcel from './UploadExcel' // 注册导入excel组件
 import Print from 'vue-print-nb'
+import TagsView from './TagsView'
 export default {
   install(Vue) {
     Vue.component("PageTools",PageTools)
     Vue.component('UploadExcel', UploadExcel)
+    Vue.component('TagsView', TagsView)
     Vue.use(Print)
   }, 
 };

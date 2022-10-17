@@ -66,6 +66,7 @@ export const constantRoutes = [
 
 const createRouter = () =>
   new Router({
+    mode:'history',
     scrollBehavior: () => ({ y: 0 }),
     routes: [...constantRoutes], //改成只有静态路由
   });
